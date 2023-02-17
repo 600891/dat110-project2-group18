@@ -3,6 +3,7 @@ package no.hvl.dat110.messages;
 public class SubscribeMsg extends Message {
 
 	// message sent from client to subscribe on a topic 
+    String topic;
 
     public SubscribeMsg(String user, String topic) {
 
