@@ -19,12 +19,12 @@ public class TemperatureDevice {
 		// TODO - start
 
 		// create a client object and use it to
-		Client client = new Client("sensor", Common.BROKERHOST ,Common.BROKERPORT);
+
 		// - connect to the broker - user "sensor" as the user name
-		Broker broker = new Broker(new Dispatcher(new Storage()), Common.BROKERPORT);
-		broker.setMaxAccept(2);
-		// - publish the temperature(s)
+		Client client = new Client("sensor", Common.BROKERHOST ,Common.BROKERPORT);
 		client.connect();
+
+		// - publish the temperature(s)
 		client.createTopic(Common.TEMPTOPIC);
 		for (int i = 0; i < COUNT; i++) {
 			client.publish(Common.TEMPTOPIC, String.valueOf(sensor.read()));
