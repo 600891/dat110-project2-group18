@@ -8,6 +8,9 @@ import no.hvl.dat110.messages.Message;
 import no.hvl.dat110.messages.PublishMsg;
 import no.hvl.dat110.common.TODO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DisplayDevice {
 	
 	private static final int COUNT = 10;
@@ -26,11 +29,15 @@ public class DisplayDevice {
 		// - create the temperature topic on the broker
 		client.createTopic(Common.TEMPTOPIC);
 
+
 		// - subscribe to the topic
 		client.subscribe(Common.TEMPTOPIC);
 
 		// - receive messages on the topic
-		client.receive(); //mottar aldri melding
+		for (int i = 0; i < COUNT; i++) {
+			System.out.println(client.receive());
+		}
+		//System.out.println(client.receive());
 
 		// - unsubscribe from the topic
 		client.unsubscribe(Common.TEMPTOPIC);

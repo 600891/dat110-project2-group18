@@ -156,12 +156,11 @@ public class Dispatcher extends Stopable {
 
 	public void onPublish(PublishMsg msg) {
 
-		String user = msg.getUser();
+		String topic = msg.getTopic();
 
 		Logger.log("onPublish:" + msg.toString());
 
-		ClientSession session = storage.getSession(user);
-		session.send(msg);
+		storage.getSubscribers(topic).forEach(sub -> storage.getSession(sub).send(msg));
 
 		// topic and message is contained in the subscribe message
 		// messages must be sent using the corresponding client session objects
