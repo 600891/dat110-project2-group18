@@ -27,7 +27,6 @@ public class TemperatureDevice {
 		for (int i = 0; i < COUNT; i++) {
 			String sensorValue = String.valueOf(sensor.read());
 			client.publish(Common.TEMPTOPIC, sensorValue);
-			System.out.println(sensorValue);
 		}
 		//client.publish(Common.TEMPTOPIC, String.valueOf(sensor.read()));
 		// - disconnect from the broker
